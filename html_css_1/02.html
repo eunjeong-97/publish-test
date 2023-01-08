@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사각형 좌표 변경 로딩 애니메이션</title>
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .loading {
+        position: relative;
+        width: 30px;
+        height: 30px;
+      }
+      .loading span {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: gray;
+        animation: loading 1.5s infinite;
+      }
+      /* .loading span:nth-child(1) {
+      } */
+      .loading span:nth-child(2) {
+        animation-delay: 0.8s;
+      }
+
+      @keyframes loading {
+        /* 애니메이션의 변환점이 5개 */
+        0% {
+          top: 0;
+          left: 0;
+          background-color: crimson;
+        }
+        /* 오른쪽 상단 */
+        25% {
+          top: 0;
+          /* right:0 */
+          /* 기존에 left로 위치 지정했을때 right로 추가로 지정해주면 위칙를 인식하지 못한다 */
+          /* 연산자 좌우로 직접 공백을 줘야한다 */
+          left: calc(100% - 10px);
+          /* left: 100%; */
+          background-color: dodgerblue;
+        }
+        50% {
+          /* bottom: 0과 동일한속성 */
+          top: calc(100% - 10px);
+          left: calc(100% - 10px);
+          /* top: 100%; */
+          /* left: 100%; */
+          background-color: orange;
+        }
+        75% {
+          top: calc(100% - 10px);
+          /* top: 100%; */
+          left: 0;
+          background-color: yellowgreen;
+        }
+        100% {
+          top: 0;
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading">
+      <span></span>
+      <span></span>
+    </div>
+  </body>
+</html>
