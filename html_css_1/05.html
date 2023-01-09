@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오버하면 상세설명 나타나는 상품목록</title>
+    <style>
+      .item {
+        display: inline-block;
+        width: 30vw;
+        height: 30vw;
+        position: relative;
+      }
+      .item:nth-child(2) {
+        /* margin: 0 3%; */
+      }
+      .item .img {
+        width: 100%;
+        height: 100%;
+        background-color: lightcoral;
+      }
+      .caption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #222;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        text-align: center;
+        /* 패딩이 추가되어도 전체 사이즈는 변함없이 */
+        box-sizing: border-box;
+      }
+      .item:hover .caption {
+        opacity: 0.7;
+      }
+
+      .caption a {
+        color: white;
+        text-decoration: none;
+        background-color: teal;
+        padding: 7px;
+        border-radius: 3px;
+      }
+      .caption a:hover {
+        color: black;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">
+        <!-- <img src="" alt="상품이미지" /> -->
+        <div class="img"></div>
+        <div class="caption">
+          <h2>상품이름</h2>
+          <p>상품설명</p>
+          <p>가격: <s>20만원</s>→ 10만원</p>
+          <a href="#none">이동하기</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <!-- <img src="" alt="상품이미지" /> -->
+        <div class="img"></div>
+        <div class="caption">
+          <h2>상품이름</h2>
+          <p>상품설명</p>
+          <p>가격: <s>20만원</s>→ 10만원</p>
+          <a href="#none">이동하기</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <!-- <img src="" alt="상품이미지" /> -->
+        <div class="img"></div>
+        <div class="caption">
+          <h2>상품이름</h2>
+          <p>상품설명</p>
+          <p>가격: <s>20만원</s>→ 10만원</p>
+          <a href="#none">이동하기</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
