@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>툴팁</title>
+    <style>
+      .container {
+        /* aspect-ratio: 1; */
+        height: 40vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+      }
+      .icon {
+        border: 1px solid crimson;
+        width: 125px;
+        height: 125px;
+        margin: 10px;
+        position: relative;
+      }
+      .img {
+        width: 100%;
+        height: 100%;
+        background-color: pink;
+      }
+
+      .icon span {
+        /* 기본값은 보여지지 않게 하면서 hover했을때만 보이도록 */
+        /* display: none; */
+        opacity: 0;
+        /* 툴팁자리에서 hover했을때도 툴팁이 보이면 안되기 때문에 */
+        /* visibility: hidden; */
+
+        /* 0.5초동안 opacity 0 → 1 변경 */
+        transition: 0.5s;
+
+        /* hover적용되지 않도록 */
+        pointer-events: none;
+
+        /* absolute로 지정하면 inline-block 속성으로 변경된다 */
+        /* 해당요소에 absolute가 있고 자식요소에 absolute가 있으면 relative도 있다고 생각하자 */
+        position: absolute;
+        width: 150px;
+        top: -50px;
+        left: 50%;
+        padding: 10px;
+        transform: translateX(-50%);
+        font-size: small;
+        background-color: #222;
+        color: white;
+        text-align: center;
+      }
+
+      .icon:hover span {
+        /* display: block; */
+        opacity: 1;
+        /* visibility: visible; */
+      }
+
+      .icon span::after {
+        content: "";
+        position: absolute;
+        /* 툴팁 위치 지정할때 */
+        /* background-color: red; */
+        background-color: #222;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg) translateX(-50%);
+        /* 해당요소의 절반사이즈 + 아래로 내려가야되니까 - -5px으로 했는데 임의로 바꿈 */
+        bottom: -5px;
+        /* left50% translateX(-50%) 가운데정렬: */
+        /* 다만 transform속성을 새로 주면 이전 속성이 지워지기 때문에 같이쓰자 */
+        left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="icon">
+        <div class="img"></div>
+        <span>이것은 툴팁내용입니다.</span>
+      </div>
+      <div class="icon">
+        <div class="img"></div>
+        <span>이것은 툴팁내용입니다.</span>
+      </div>
+      <div class="icon">
+        <div class="img"></div>
+        <span>이것은 툴팁내용입니다.</span>
+      </div>
+      <div class="icon">
+        <div class="img"></div>
+        <span>이것은 툴팁내용입니다.</span>
+      </div>
+    </div>
+
+    <ol>
+      <li>
+        display:none → block으로 변경해도 해당요소가 보이지 않다가 보여지게
+        되지만
+      </li>
+      <li>
+        transition속성으로 서서히 보이게 하려면 display대신 opacity 0→1으로
+        변경되게 해야한다
+      </li>
+      <li>
+        다만 이렇게 opacity로만 속성을 주게 되면 hover지정한 곳이 아닌
+        opacity요소에 hover했을때도 툴팁이 보이게 되는 이슈가 생겨서
+      </li>
+      <li>
+        visibility: hidden → visible 속성으로 해당요소 자체를 없앴다가 생기도록
+        하는것도 좋다
+      </li>
+      <li>
+        이때 visibility:hidden, visible이 아닌, opacity속성을 준 요소(=툴팁)에
+        point-event:none 속성을 줘도 된다
+      </li>
+      <li>개인적으로 visibility보다는 point-event으로 주는게 더 나은것같다</li>
+    </ol>
+  </body>
+</html>

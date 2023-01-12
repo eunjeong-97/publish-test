@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>위아래 분리되는 hover 네비게이션</title>
+    <style>
+      .container {
+        background-color: #222;
+        font-size: 15px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        /* 가운데정렬 */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+      }
+      .item {
+        width: 300px;
+        /* 부모요소에 높이가 없으면 absolute 자식이 이동할 수없다 */
+        height: 250px;
+        position: relative;
+        margin: 10px;
+      }
+      .front,
+      .back {
+        position: absolute;
+        /* 변화전후 모두 동일한 속성이 있어야 서서히 해당 속성이 변경된다 */
+        transition: 0.5s;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .front {
+        background-color: #333;
+        width: 100%;
+        height: 150px;
+        z-index: 1;
+        border-radius: 5px 5px 0 0;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+      }
+      .front .img {
+        width: 100px;
+        height: 100%;
+        background-color: pink;
+        margin: auto;
+        border-radius: 100%;
+      }
+      .front .img:hover {
+        animation: scale 1s linear infinite;
+      }
+      .front h2 {
+        margin: 0;
+      }
+      .back {
+        background-color: #fff;
+        width: 100%;
+        color: #000;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 0 0 5px 5px;
+        opacity: 0;
+      }
+      .back a {
+        color: #fff;
+        background-color: yellowgreen;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 5px;
+      }
+      .back a:hover {
+        background-color: #222;
+      }
+      .item:hover .front {
+        top: 25%;
+      }
+      .item:hover .back {
+        top: 75%;
+        opacity: 1;
+      }
+
+      @keyframes scale {
+        0%,
+        100% {
+          transform: scale(0.9);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">
+        <div class="front">
+          <div class="img"></div>
+          <h2>제목</h2>
+        </div>
+        <div class="back">
+          <p>설명들 블라블라블라</p>
+          <a href="#name">더 알아보기</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="front">
+          <div class="img"></div>
+          <h2>제목</h2>
+        </div>
+        <div class="back">
+          <p>설명들 블라블라블라</p>
+          <a href="#name">더 알아보기</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="front">
+          <div class="img"></div>
+          <h2>제목</h2>
+        </div>
+        <div class="back">
+          <p>설명들 블라블라블라</p>
+          <a href="#name">더 알아보기</a>
+        </div>
+      </div>
+    </div>
+    <ol>
+      <li>absolute 가운데정렬 체크</li>
+      <li>
+        position absolute하고 이동시키려했을때 relative부모요소에 영역이
+        부족하다면 이동이 안된다
+      </li>
+      <li>
+        transition으로 서서히 속성을 변화시키려할때, 변화전후 모두 동일한 속성이
+        있어야 작동된다
+      </li>
+      <li>width, height inherit 보다는 100%으로 적용시키자</li>
+      <li>
+        front에서 img에 height 100%했을때 제목이 front바깥으로 튕겨져나갈땐,
+        front에 display:flex, flex-direction:column을 주자
+      </li>
+    </ol>
+  </body>
+</html>
