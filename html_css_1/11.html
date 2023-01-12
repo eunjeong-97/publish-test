@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>borderRadius hover효과</title>
+    <style>
+      .body {
+        background-color: aliceblue;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .gnb {
+        width: 80%;
+        list-style: none;
+        padding: 50px 30px;
+        margin: 0;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+      }
+      .gnb li {
+        /* float: left;
+        border: 1px solid black;
+        width: 18%;
+        padding: 50px 0; */
+        flex: 1;
+        text-align: center;
+      }
+      .gnb li a {
+        text-decoration: none;
+        color: #222;
+        position: relative;
+      }
+      .gnb li a::before {
+        content: "";
+        position: absolute;
+        background-color: dodgerblue;
+        height: 2px;
+        /* 처음만들때 0으로 하면 가늠하기 어려우니까 5px로 지정해서 만들고 이후에 0으로 변경 */
+        /* width: 5px; */
+        width: 0;
+        bottom: -10px;
+        transition: 0.5s;
+      }
+
+      /* 오른쪽에서 시작 */
+      .gnb li:nth-child(2) a:before {
+        right: 0;
+      }
+
+      /* 가운데에서부터 좌우로시작 */
+      .gnb li:nth-child(3) a:before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .gnb li a:hover::before {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    지금까지의 네비게이션과는 다르게 각각의 항목이 일정한 너비를 가지고 있기
+    때문에 ul-li 구조를 가져야 한다
+    <div class="body">
+      <ul class="gnb">
+        <li><a href="#none">메뉴1</a></li>
+        <li><a href="#none">메뉴2</a></li>
+        <li><a href="#none">메뉴3</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>before after SNS 애니메이션</title>
+    <style>
+      @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      a {
+        text-decoration: none;
+        color: #222;
+      }
+
+      .sns {
+        background-color: #eee;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.12);
+      }
+      .sns a {
+        display: inline-block;
+        border: 5px solid white;
+        background-color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        /* 가로정렬 */
+        text-align: center;
+        /* 높이정렬하기 위해: 세로정렬 */
+        line-height: 80px;
+        font-size: 40px;
+        margin: 0 10px;
+
+        position: relative;
+        overflow: hidden;
+      }
+      .sns a::before {
+        content: "";
+        /* absolute로 위치를 잡는경우 before, after 상관없다 */
+        position: absolute;
+        /* width: 100%; */
+        /* height: 10px; */
+        /* 위에서 아래로 배경색 채워줄때는 top */
+        /* 아래에서 위로 배경색 채워줄때는 bottom */
+        /* bottom: 0; */
+        /* left: 0; */
+        transition: 0.5s;
+      }
+
+      /* 배경색지정 */
+      /* social color 검색해서 색상추출 */
+      .sns a:nth-child(1)::before {
+        background-color: crimson;
+        /* 아래에서 위로 */
+        bottom: 0;
+      }
+      .sns a:nth-child(2)::before {
+        background-color: coral;
+        /* 위에서 아래로 */
+        top: 0;
+      }
+      .sns a:nth-child(3)::before {
+        background-color: yellowgreen;
+        /* 왼쪽에서 오른쪽으로 */
+        left: 0;
+      }
+      .sns a:nth-child(4)::before {
+        background-color: royalblue;
+        /* 오른쪽에서 왼쪽으로 */
+        right: 0;
+      }
+      .sns a:nth-child(5)::before {
+        background-color: plum;
+        /* 가운데에서 시작 */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+      }
+      /* 방향상하 */
+      .sns a:nth-child(1):before,
+      .sns a:nth-child(2):before {
+        width: 100%;
+        height: 0;
+        left: 0;
+      }
+
+      .sns a:nth-child(1):hover::before,
+      .sns a:nth-child(2):hover::before {
+        height: 100%;
+      }
+
+      /* 방향좌우 */
+      .sns a:nth-child(3):before,
+      .sns a:nth-child(4):before {
+        width: 0;
+        height: 100%;
+      }
+      .sns a:nth-child(3):hover::before,
+      .sns a:nth-child(4):hover::before {
+        width: 100%;
+      }
+      /* 가운데에서 사방팔방 */
+      .sns a:last-child:hover::before {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      /* relative로 지정하면 우선순위가 올라가기 때문에 위로 올라온다 */
+      /* relative로 지정한다고 해서 다른속성들이 어그러지는경우는 없다 */
+      .sns a .fa {
+        position: relative;
+        transition: 0.5s;
+      }
+      .sns a:hover .fa {
+        transform: rotateY(360deg);
+        /* transform: rotateX(360deg); */
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sns">
+      <a href="#none"><i class="fa fa-facebook"></i></a>
+      <a href="#none"><i class="fa fa-twitter"></i></a>
+      <a href="#none"><i class="fa fa-google-plus"></i></a>
+      <a href="#none"><i class="fa fa-linkedin"></i></a>
+      <a href="#none"><i class="fa fa-instagram"></i></a>
+    </div>
+  </body>
+</html>
